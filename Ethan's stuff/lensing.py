@@ -46,7 +46,7 @@ z_positionsi = np.arange(0, z_sizei, 1)
 y_positionsi = pixel_lengthi*(y_positionsi - y_sizei/2)
 z_positionsi = pixel_lengthi*(z_positionsi - z_sizei/2)
 
-nFrames = 60 # Number of frames
+nFrames = 8 # Number of frames
 pixelStepFrame = 2 # how many pixels to move each frame. Must be an integer.
 
 plt.style.use('dark_background')
@@ -93,7 +93,7 @@ def process(f):
     plt.savefig(str(vidFolder)+"/Lensed_"+str(f)+"_"+imageName)
     plt.close(fig)
 
-Parallel(n_jobs=40)(delayed(process)(k) for k in tqdm(range(nFrames)))
+Parallel(n_jobs=1)(delayed(process)(k) for k in tqdm(range(nFrames)))
 
 print("Frames Done.")
 print("Making Video...")
